@@ -1,0 +1,149 @@
+/* Styles for section_1 */
+#section_1 {
+    position: relative;
+    /* Ensure proper positioning for overlay */
+    padding: 100px 0;
+    /* Increased top and bottom padding for more space */
+    min-height: 800px;
+    /* Ensure a minimum height for the section */
+    z-index: 2;
+    /* Ensure section is above others */
+}
+
+.section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay for contrast */
+    z-index: 1;
+    /* Ensure it's below other content */
+}
+
+/* Styles for the title in section_1 */
+#section_1 h1 {
+    font-size: 1.4rem;
+    /* Decrease the font size for better adjustment */
+    margin-bottom: 10px;
+    /* Adjust bottom margin for spacing */
+}
+
+/* Adjusted styles for section_2 */
+#section_2 {
+    background-color: #f8f9fa;
+    /* Light background for contrast */
+    padding: 50px 0;
+    /* Reduced padding for a more compact appearance */
+    margin-top: -50px;
+    /* Slight negative margin to pull it closer to section_1 */
+}
+
+/* Blurred box styles */
+.blurred-box {
+    background: rgba(255, 255, 255, 0.5);
+    /* White background with 50% opacity */
+    backdrop-filter: blur(10px);
+    /* Blur effect */
+    border-radius: 15px;
+    /* Rounded corners */
+    padding: 30px;
+    /* Decrease padding for a smaller box */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    /* Increased shadow for depth */
+    margin: 0 auto;
+    /* Center the box */
+    width: 400px;
+    /* Width for the box */
+    max-width: 90%;
+    /* Responsive width to prevent overflow on smaller screens */
+}
+
+.file-upload-form {
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    /* Center elements horizontally */
+}
+
+.file-input {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #007bff;
+    border-radius: 2px;
+    padding: 10px;
+    /* Increased padding for better appearance */
+    margin-bottom: 5px;
+    /* Space between input and button */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    color: #333;
+    width: 100%;
+    /* Full width of the box */
+    text-align: center;
+    /* Center text inside the input */
+}
+
+.file-input:hover {
+    background-color: rgba(240, 240, 240, 0.9);
+}
+
+.btn.custom-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    /* Increased padding for button */
+    font-size: 20px;
+    /* Font size for button */
+    border-radius: 15px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+    width: 100%;
+    /* Full width of the box */
+}
+
+.btn.custom-btn:hover {
+    background-color: #02ee02;
+    transform: scale(1.05);
+}
+
+/* Minimized styles for prediction and accuracy boxes */
+.prediction,
+.accuracy {
+    margin-top: 15px;
+    /* Reduced margin for less space */
+    padding: 15px;
+    /* Decrease padding for a smaller box */
+    background-color: rgba(255, 255, 255, 0.856);
+    /* Slightly transparent background */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 10px;
+    /* Smaller font size for prediction and accuracy */
+    color: #00eeff;
+    /* Text color */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* Reduced shadow */
+    animation: fadeIn 0.8s ease-in-out;
+    /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.disclaimer {
+    margin-top: 10px;
+    /* Margin for the disclaimer */
+    font-size: 14px;
+    /* Font size for disclaimer */
+    color: #dfdfdf;
+    /* Text color for disclaimer */
+}

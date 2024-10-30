@@ -1,0 +1,643 @@
+<!-- <!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PE File Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #62ddf9;
+            background-image: url('images.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Stylish header for the title */
+        .hn {
+            margin-top: 0px;
+            color: #fff;
+            font-size: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin-top: 40px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 28px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            background-color: #fff;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="file"]:hover {
+            background-color: #f0f0f0;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .prediction,
+        .accuracy {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(233, 236, 239, 0.8);
+            border-radius: 8px;
+            font-size: 18px;
+            color: #495057;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .prediction p {
+            font-weight: bold;
+            /* Bold the result */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Disclaimer section */
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .disclaimer p {
+            margin: 0;
+        }
+
+        .disclaimer p:before {
+            content: "*";
+            margin-right: 5px;
+            color: #f00;
+        }
+
+        /* Add responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            input[type="submit"] {
+                padding: 10px 20px;
+            }
+
+            .hn {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hn">Malware Detector</div>
+
+    <div class="container">
+        <h1>Upload PE File for Classification</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".exe" required>
+            <input type="submit" value="Classify">
+        </form>
+        {% if prediction %}
+        <div class="prediction">
+            <h2>Prediction:</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+        {% if accuracy %}
+        <div class="accuracy">
+            <h2>Accuracy:</h2>
+            <p>{{ accuracy }}%</p>
+        </div>
+        {% endif %}
+
+        <div class="disclaimer">
+            <p>Please note, the prediction results are not 100% accurate and are intended to assist with classification.
+                Always verify the results through additional means.</p>
+        </div>
+    </div>
+</body>
+
+</html> -->
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Festava Live - Bootstrap 5 CSS Template</title>
+
+    <!-- CSS FILES -->
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
+
+    <!-- Use url_for to link to static CSS files -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/templatemo-festava-live.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/prediction.css') }}" rel="stylesheet">
+
+    <!--
+
+TemplateMo 583 Festava Live
+
+https://templatemo.com/tm-583-festava-live
+
+-->
+</head>
+
+<body>
+
+    <main>
+
+        <header class="site-header">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-person custom-icon me-2"></i>
+                            <strong class="text-dark">Welcome to PEGuard</strong>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    PEGuard: Malware Detection Made Simple
+                </a>
+
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2">About</a>
+                        </li>
+
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_6">Contact</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- <section class="hero-section" id="section_1">
+            <div class="section-overlay"></div>
+
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="row">
+
+                    <div class="col-12 mt-auto mb-5 text-center">
+                        <small>Detect Malware From Portable Executable Files</small>
+
+                        <h1 class="text-white mb-5">Upload PE File</h1>
+
+                        <a class="btn custom-btn smoothscroll" href="#section_2">UPLOAD HERE</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="video-wrap">
+                <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                    <source src="video/pexels-2022395.mp4" type="video/mp4">
+
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section> -->
+
+        <section class="hero-section" id="section_1">
+            <div class="section-overlay"></div>
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="row">
+                    <div class="col-12 mt-auto mb-5 text-center">
+                        <small>Detect Malware From Portable Executable Files</small>
+                        <h1 class="text-white mb-5">Upload PE File</h1>
+                        <div class="blurred-box">
+                            <form method="POST" enctype="multipart/form-data" class="file-upload-form">
+                                <input type="file" name="file" accept=".exe" required class="file-input">
+                                <input type="submit" value="Classify" class="btn custom-btn">
+                            </form>
+
+                            {% if prediction %}
+                            <div class="prediction">
+                                <h5>Prediction:</h5>
+                                <p
+                                    style="font-style: oblique; font-size: medium;  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                                    {{ prediction }}</p>
+                            </div>
+                            {% endif %}
+                            {% if accuracy %}
+                            <div class="accuracy">
+                                <h5>Accuracy:</h5>
+                                <p
+                                    style="font-style: oblique; font-size: medium;  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                                    {{ accuracy }}%</p>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="disclaimer">
+                            <p>Please note, the prediction results are not 100% accurate and are intended to assist with
+                                classification. Always verify the results through additional means.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrap">
+                <video autoplay loop muted class="custom-video" poster="">
+                    <source src="{{ url_for('static', filename='video/pexels-2022395.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+        </section>
+
+        <section id="section_2">
+            <!-- Content for section 2 -->
+        </section>
+
+
+
+
+
+        <section class="about-section section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">
+                        <div class="services-info">
+                            <h2 class="text-white mb-4">About PEGuard: Malware Detection Made Simple</h2>
+
+                            <p class="text-white">PEGuard is a specialized web application designed to detect potential
+                                malware threats within Portable Executable (PE) files. Utilizing advanced machine
+                                learning techniques, our platform enables you to quickly and accurately identify
+                                suspicious files before they pose a risk.</p>
+
+                            <h6 class="text-white mt-4">Focused, Fast, and Free
+
+                            </h6>
+
+                            <p class="text-white">PEGuard offers a quick, user-friendly solution for detecting malware
+                                in PE files, specifically for Windows executables. It’s free for both personal and
+                                commercial use—just share our website link to spread the word!
+                            </p>
+
+                            <h6 class="text-white mt-4">Keeping Your System Secure
+
+                            </h6>
+
+                            <p class="text-white">PEGuard provides free, reliable malware detection for PE files. Please
+                                share our website link to support others in accessing this tool securely. Thank you.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+                        <div class="about-text-wrap">
+                            <img src="{{ url_for('static', filename='images/pexels-alexander-suhorucov-6457579.jpg') }}"
+                                class="about-image img-fluid">
+
+                            <div class="about-text-info d-flex">
+                                <div class="d-flex">
+                                    <i class="about-text-icon bi-person"></i>
+                                </div>
+
+
+                                <div class="ms-4">
+                                    <h3>PEGuard:</h3>
+
+                                    <p class="mb-0"> Reliable malware detection for PE files, ensuring a safer digital
+                                        experience!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="contact-section section-padding" id="section_3">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 text-center">
+                        <h2 class="mb-4">Contact Us</h2>
+                    </div>
+
+                    <div class="col-lg-5 col-12">
+                        <div class="contact-thumb">
+                            <div class="contact-details">
+                                <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+                                <p><strong>Email:</strong> <a href="mailto:karan26c@gmail.com">info@PEGuard.com</a>
+                                </p>
+                                <p><strong>Location:</strong> Vishnupuri, Nanded, MH, INDIA, 431606</p>
+                                <hr>
+                                <p class="mb-0">
+                                    <strong>Follow Us:</strong>
+                                    <a href="#">Facebook</a> | <a href="https://x.com/KaranC26">Twitter</a> | <a
+                                        href="https://www.instagram.com/c_karan26">Instagram</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="site-footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12">
+                        <h2 class="text-white mb-lg-0">PEGuard</h2>
+                    </div>
+
+                    <div class="col-lg-6 col-12 d-flex justify-content-lg-end align-items-center">
+                        <ul class="social-icon d-flex justify-content-lg-end">
+                            <li class="social-icon-item">
+                                <a href="https://x.com/KaranC26" class="social-icon-link">
+                                    <span class="bi-twitter"></span>
+                                </a>
+                            </li>
+
+
+
+                            <li class="social-icon-item">
+                                <a href="#https://www.instagram.com/c_karan26" class="social-icon-link">
+                                    <span class="bi-instagram"></span>
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link">
+                                    <span class="bi-youtube"></span>
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link">
+                                    <span class="bi-pinterest"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-12 mb-4 pb-2">
+                    <h5 class="site-footer-title mb-3">Links</h5>
+
+                    <ul class="site-footer-links">
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Home</a>
+                        </li>
+
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">About</a>
+                        </li>
+
+                        <!-- <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Artists</a>
+                        </li>
+
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Schedule</a>
+                        </li>
+
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Pricing</a>
+                        </li> -->
+
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                    <h5 class="site-footer-title mb-3">Have a question?</h5>
+
+                    <p class="text-white d-flex mb-1">
+                        <a href="tel: 090-080-0760" class="site-footer-link">
+                            090-080-0760
+                        </a>
+                    </p>
+
+                    <p class="text-white d-flex">
+                        <a href="mailto:karan26c@gmail.com" class="site-footer-link">
+                            PEGuard@company.com
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
+                    <h5 class="site-footer-title mb-3">Location</h5>
+
+                    <p class="text-white d-flex mt-3 mb-2">
+                        Nanded, Maharashtra, India, 431606 </p>
+
+                    <!-- <a class="link-fx-1 color-contrast-higher mt-3" href="#">
+                        <span>Our Maps</span>
+                        <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
+                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="16" cy="16" r="15.5"></circle>
+                                <line x1="10" y1="18" x2="16" y2="12"></line>
+                                <line x1="16" y1="12" x2="22" y2="18"></line>
+                            </g>
+                        </svg>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="site-footer-bottom">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-12 mt-5">
+                        <p class="copyright-text">Copyright © 2036 PEGuard Company</p>
+                        <p class="copyright-text" style="font-size: larger;">Distributed by: <a
+                                href="https://portf-black.vercel.app">Developer</a></p>
+                    </div>
+
+                    <div class="col-lg-8 col-12 mt-lg-5">
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Terms &amp; Conditions</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Privacy Policy</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Your Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--
+
+T e m p l a t e M o
+
+-->
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/click-scroll.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+
+</body>
+
+</html>

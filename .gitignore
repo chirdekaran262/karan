@@ -1,0 +1,11 @@
+# Ignore all .log files
+*.log
+
+# Ignore specific files or directories
+.env
+node_modules/
+venv/
+*.pyc
+
+# Ignore all files in a specific directory
+__pycache__/
