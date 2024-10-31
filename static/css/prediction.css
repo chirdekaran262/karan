@@ -1,13 +1,13 @@
 /* Styles for section_1 */
 #section_1 {
     position: relative;
-    /* Ensure proper positioning for overlay */
     padding: 100px 0;
     /* Increased top and bottom padding for more space */
-    min-height: 800px;
+    min-height: 1050px;
     /* Ensure a minimum height for the section */
     z-index: 2;
     /* Ensure section is above others */
+
 }
 
 .section-overlay {
@@ -34,30 +34,27 @@
 #section_2 {
     background-color: #f8f9fa;
     /* Light background for contrast */
-    padding: 50px 0;
+    padding: 70px 0;
     /* Reduced padding for a more compact appearance */
-    margin-top: -50px;
+    /* margin-top: -70px; */
     /* Slight negative margin to pull it closer to section_1 */
 }
 
 /* Blurred box styles */
 .blurred-box {
     background: rgba(255, 255, 255, 0.5);
-    /* White background with 50% opacity */
     backdrop-filter: blur(10px);
-    /* Blur effect */
     border-radius: 15px;
-    /* Rounded corners */
     padding: 30px;
-    /* Decrease padding for a smaller box */
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
-    /* Increased shadow for depth */
     margin: 0 auto;
     /* Center the box */
-    width: 400px;
-    /* Width for the box */
-    max-width: 90%;
-    /* Responsive width to prevent overflow on smaller screens */
+    width: 90%;
+    /* Covering most of the horizontal area */
+    max-width: 800px;
+    /* Maximum width for larger screens */
+    margin-bottom: 30px;
+
 }
 
 .file-upload-form {
@@ -146,4 +143,89 @@
     /* Font size for disclaimer */
     color: #dfdfdf;
     /* Text color for disclaimer */
+}
+
+/* URL Classifier Box Styles */
+.url-classifier-box {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    margin: 30px auto;
+    width: 90%;
+    /* Covering most of the horizontal area */
+    max-width: 800px;
+    /* Maximum width for larger screens */
+    text-align: center;
+}
+
+.url-classification-form {
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Vertically stack elements in the form */
+}
+
+.url-input {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #007bff;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    color: #333;
+    width: 100%;
+    text-align: center;
+}
+
+.url-input:hover {
+    background-color: rgba(240, 240, 240, 0.9);
+}
+
+.url-classification-form .btn.custom-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+    width: 100%;
+}
+
+.url-classification-form .btn.custom-btn:hover {
+    background-color: #02ee02;
+    transform: scale(1.05);
+}
+
+/* URL Prediction Output */
+.url-prediction {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00aaff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@media (max-width: 768px) {
+
+    .blurred-box,
+    .url-classifier-box {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .file-input,
+    .url-input {
+        padding: 8px;
+    }
 }
