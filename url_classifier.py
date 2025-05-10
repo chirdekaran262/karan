@@ -6,6 +6,7 @@ import requests
 
 # Define expected features based on your model's training data
 expected_features = [
+    'index',
     'having_IPhaving_IP_Address',
     'URLURL_Length',
     'Shortining_Service',
@@ -35,13 +36,13 @@ expected_features = [
     'Page_Rank',
     'Google_Index',
     'Links_pointing_to_page',
-    'Statistical_report',
-    'Result'
+    'Statistical_report'
+    # 'Result'
 ]
 
 def extract_features(url):
     features = {}
-    
+    features['index'] = 0  # Placeholder for index, can be set to a unique value if needed
     # URL features
     features['having_IPhaving_IP_Address'] = int(bool(re.search(r'\d+\.\d+\.\d+\.\d+', url)))
     features['URLURL_Length'] = len(url)
@@ -104,7 +105,7 @@ def extract_features(url):
     features['Google_Index'] = -1  
     features['Links_pointing_to_page'] = -1  
     features['Statistical_report'] = -1  
-    features['Result'] = -1  # Placeholder, update based on actual classification
+    # features['Result'] = -1  # Placeholder, update based on actual classification
 
     return pd.DataFrame([features], columns=expected_features)
 

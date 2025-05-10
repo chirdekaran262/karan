@@ -169,8 +169,8 @@ def extract_infos(fpath):
 
 if __name__ == '__main__':
     # Loading the classifier and features
-    clf = joblib.load('classifier.pkl')
-    with open('features.pkl', 'rb') as f:
+    clf = joblib.load('best_model.pkl')
+    with open('feature_names.pkl', 'rb') as f:
         features = pickle.load(f)
     
     # Extracting features from the PE file
